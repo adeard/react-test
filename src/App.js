@@ -1,23 +1,25 @@
-import logo from './logo.svg';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import './App.css';
+import Aboutpage from './components/fungsional/aboutComp';
+import Homepage from './components/fungsional/homepage';
+import NavbarComp from './components/fungsional/navbarComp';
+import DetailComp from './components/fungsional/detailComp';
+import ListComp from './components/class/listComp';
+import TambahComp from './components/class/tambahComp';
 
-function App() {
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <NavbarComp />
+      <BrowserRouter>      
+      <Routes>
+        <Route path='/' Component={Homepage} />
+        <Route path='/about' Component={Aboutpage} />
+        <Route path='/mahasiswa' Component={ListComp} />
+        <Route path='/mahasiswa/tambah' Component={TambahComp} />
+        <Route path='/detail/:id' element={<DetailComp />} />
+      </Routes>
+      </BrowserRouter>
     </div>
   );
 }
